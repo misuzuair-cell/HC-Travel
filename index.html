@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅遊領隊助手 - AI 數據提取</title>
+    <!-- 加載 Tailwind CSS 框架 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 加載圖標庫 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 加載自定義樣式 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 min-h-screen p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">旅遊領隊助手</h1>
+            <p class="text-slate-500">專業、快速、精準的行程信息提取工具</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- 輸入區 -->
+            <section class="card-container p-6">
+                <textarea id="inputText" class="input-field" placeholder="請在此粘貼行程內容、酒店確認單或導遊日誌..."></textarea>
+                
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between mt-4">
+                    <div class="flex gap-6">
+                        <label class="radio-label">
+                            <input type="radio" name="aiModel" value="doubao" checked>
+                            <span>豆包 (Doubao)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="aiModel" value="gemini">
+                            <span>Gemini (Google)</span>
+                        </label>
+                    </div>
+                    <button id="extractBtn" class="btn-primary">
+                        <i data-lucide="sparkles"></i>
+                        <span>開始提取信息</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 結果展示區 -->
+            <section id="resultSection" class="hidden space-y-6">
+                <!-- 酒店信息卡片 -->
+                <div class="card-container p-6">
+                    <h2 class="section-title">
+                        <i data-lucide="hotel"></i> 酒店入住指引
+                    </h2>
+                    <div id="hotelGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 由 JS 動態填充 -->
+                    </div>
+                </div>
+
+                <!-- 明日行程卡片 -->
+                <div class="card-container p-6">
+                    <h2 class="section-title">
+                        <i data-lucide="calendar"></i> 明日行程概要
+                    </h2>
+                    <div id="itineraryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 由 JS 動態填充 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 加載業務邏輯 -->
+    <script src="script.js"></script>
+</body>
+</html>
